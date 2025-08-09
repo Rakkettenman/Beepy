@@ -119,28 +119,9 @@ class ChatListItem extends StatelessWidget {
                     height: Avatar.defaultSize,
                     child: Stack(
                       children: [
-                        if (space != null)
-                          Positioned(
-                            top: 0,
-                            left: 0,
-                            child: Avatar(
-                              border: BorderSide(
-                                width: 2,
-                                color: backgroundColor ??
-                                    theme.colorScheme.surface,
-                              ),
-                              borderRadius: BorderRadius.circular(
-                                AppConfig.borderRadius / 4,
-                              ),
-                              mxContent: space.avatar,
-                              size: Avatar.defaultSize * 0.75,
-                              name: space.getLocalizedDisplayname(),
-                              onTap: () => onLongPress?.call(context),
-                            ),
-                          ),
                         Positioned(
-                          bottom: 0,
-                          right: 0,
+                          top: 0,
+                          left: 0,
                           child: Avatar(
                             border: space == null
                                 ? room.isSpace
@@ -161,7 +142,7 @@ class ChatListItem extends StatelessWidget {
                                 : null,
                             mxContent: room.avatar,
                             size: space != null
-                                ? Avatar.defaultSize * 0.75
+                                ? Avatar.defaultSize * 1
                                 : Avatar.defaultSize,
                             name: displayname,
                             presenceUserId: directChatMatrixId,
@@ -169,6 +150,25 @@ class ChatListItem extends StatelessWidget {
                             onTap: () => onLongPress?.call(context),
                           ),
                         ),
+                        if (space != null)
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Avatar(
+                              border: BorderSide(
+                                width: 2,
+                                color: backgroundColor ??
+                                    theme.colorScheme.surface,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                AppConfig.borderRadius / 4,
+                              ),
+                              mxContent: space.avatar,
+                              size: Avatar.defaultSize * 0.5,
+                              name: space.getLocalizedDisplayname(),
+                              onTap: () => onLongPress?.call(context),
+                            ),
+                          ),
                         Positioned(
                           top: 0,
                           right: 0,

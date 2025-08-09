@@ -230,13 +230,13 @@ class ChatListController extends State<ChatList>
   bool Function(Room) getRoomFilterByActiveFilter(ActiveFilter activeFilter) {
     switch (activeFilter) {
       case ActiveFilter.allChats:
-        return (room) => true;
+        return (room) => !room.isSpace && !room.getLocalizedDisplayname().contains("bridge bot");
       case ActiveFilter.messages:
-        return (room) => !room.isSpace && room.isDirectChat;
+        return (room) => !room.isSpace && room.isDirectChat && !room.getLocalizedDisplayname().contains("bridge bot");
       case ActiveFilter.groups:
-        return (room) => !room.isSpace && !room.isDirectChat;
+        return (room) => !room.isSpace && !room.isDirectChat && !room.getLocalizedDisplayname().contains("bridge bot");
       case ActiveFilter.unread:
-        return (room) => room.isUnreadOrInvited;
+        return (room) => room.isUnreadOrInvited && !room.getLocalizedDisplayname().contains("bridge bot");
       case ActiveFilter.spaces:
         return (room) => room.isSpace;
     }

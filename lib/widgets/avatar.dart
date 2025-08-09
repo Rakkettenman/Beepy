@@ -55,8 +55,8 @@ class Avatar extends StatelessWidget {
             color: theme.brightness == Brightness.light
                 ? Colors.white
                 : Colors.black,
-            shape: RoundedRectangleBorder(
-              borderRadius: borderRadius,
+            shape: CircleBorder(
+              //borderRadius: borderRadius,
               side: border ?? BorderSide.none,
             ),
             clipBehavior: Clip.antiAlias,
@@ -110,7 +110,7 @@ class Avatar extends StatelessWidget {
                       : Colors.grey;
               return Positioned(
                 bottom: -3,
-                right: -3,
+                left: -3,
                 child: Container(
                   width: 16,
                   height: 16,
